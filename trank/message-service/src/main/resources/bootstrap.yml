@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: message-center
+  profiles:
+    active: default
+  cloud:
+    config:
+      name: common,datasource,system,rabbitmq,redis,${spring.application.name},${spring.application.name}-bootstrap,${spring.application.name}-application
+      profile: ${spring.profiles.active}
+      label: ${COFNIG_BRANCH:master}
+      discovery:
+        enabled: true
+        service-id: platform-config-center
+
+server:
+  port: 9600
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: ${REGISTRY_CENTER_URI:http://localhost:9020/eureka/}
+multipart:
+  enabled: true
+  max-file-size: 50mb
+  max-request-size: 50mb
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  level:
+    mapper: debug
+    com.sudiyi.cloud.codelivery.dao: debug
+
+
+
+

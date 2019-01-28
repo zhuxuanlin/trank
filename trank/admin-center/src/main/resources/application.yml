@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: platfrom-amdin-center
+
+server:
+  port: 8088
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: ${REGISTRY_CENTER_URI:http://localhost:9020/eureka/}
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: platform-config-center
+  cloud:
+    bus:
+      trace:
+        enabled: true
+    config:
+      server:
+        git:
+          uri: ${CI_GIT_URL:https://github.com/KingBlueSky/cloud-platform-config-repo.git}
+          username: ${CI_GIT_USERNAME:469799409@qq.com}
+          password: ${CI_GIT_PASSWORD:jp80890912345}
+          clone-on-start: ${CLONE_ON_START:true}
+          search-paths: services/**,platform/**
+
+  rabbitmq:
+    host: ${CI_RABBIT_HOST:192.168.142.129}
+    port: ${CI_RABBIT_PORT:5672}
+    username: ${CI_RABBIT_USERNAME:root}
+    password: ${CI_RABBIT_PASSWORD:root}
+    virtual-host: ${CI_RABBIT_VIRTUAL_HOST:cloud-platform}
+
+server:
+  port: 9010
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: ${REGISTRY_CENTER_URI:http://localhost:9020/eureka/}
+
+#management:
+#    security:
+#        enabled: false
+#security:
+#    basic:
+#        enabled: false
+#    user:
+#        name: hunter
+#        password: iamnotapassword
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.aipark.order.dao.OrderInfoDao">
+
+    <resultMap id="BaseResultMap" type="com.aipark.order.vo.OrderInfoVo">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="order_no" property="orderNo" jdbcType="VARCHAR"/>
+        <result column="express_no" property="expressNo" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="SMALLINT"/>
+        <result column="receiver_name" property="receiverName" jdbcType="VARCHAR"/>
+        <result column="receiver_tel" property="receiverTel" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <!-- 基础列 -->
+    <sql id="_base_column">
+        id, order_no, express_no, status, receiver_name, receiver_tel
+    </sql>
+
+
+    <!-- 获取所有订单 -->
+    <select id="findAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="_base_column"/>
+        FROM
+        order_info
+    </select>
+
+
+</mapper>

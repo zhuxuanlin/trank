@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: platform-gateway-center
+  profiles:
+    active: default
+  cloud:
+    config:
+      name: common,datasource,system,redis,rabbitmq,${spring.application.name},${spring.application.name}-bootstrap,${spring.application.name}-application
+      profile: ${spring.profiles.active}
+      label: ${COFNIG_BRANCH:master}
+      discovery:
+        enabled: true
+        service-id: platform-config-center
+
+server:
+  port: 9000
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${REGISTRY_CENTER_URI:http://localhost:9020/eureka/}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
