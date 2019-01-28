@@ -8,9 +8,9 @@ spring:
     config:
       server:
         git:
-          uri: ${CI_GIT_URL:https://github.com/KingBlueSky/cloud-platform-config-repo.git}
-          username: ${CI_GIT_USERNAME:469799409@qq.com}
-          password: ${CI_GIT_PASSWORD:jp80890912345}
+          uri: ${CI_GIT_URL:https://github.com/zhuxuanlin/KingBlueSky-cloud-platform-config-repo.git}
+          username: ${CI_GIT_USERNAME:1050668209@qq.com}
+          password: ${CI_GIT_PASSWORD:zxl19920511}
           clone-on-start: ${CLONE_ON_START:true}
           search-paths: services/**,platform/**
 
